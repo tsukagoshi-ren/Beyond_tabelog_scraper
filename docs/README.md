@@ -129,16 +129,47 @@ VSCodeを使用している場合、`Ctrl+Shift+B` でビルドタスクを実�
 
 ```
 tabelog-scraper/
-├── main.py                 # メインアプリケーション
-├── prefectures.py          # 都道府県データ
-├── middle_categorys.py     # 地域（中項目）データ
-├── small_categorys.py      # 地域（小項目）データ
-├── setup.py               # cx_Freeze設定ファイル
-├── requirements.txt       # 依存関係リスト
-├── README.md             # このファイル
-├── .gitignore            # Git除外設定
-└── .vscode/              # VSCode設定（オプション）
-    └── tasks.json        # ビルドタスク設定
+├── src/                            # ソースコード
+│   ├── main.py                     # メインエントリーポイント
+│   ├── gui/                        # GUI関連
+│   │   ├── __init__.py
+│   │   ├── main_window.py          # メインウィンドウ
+│   │   ├── search_tab.py           # 検索条件タブ
+│   │   └── progress_tab.py         # 進行状況タブ
+│   │
+│   ├── scraping/                   # スクレイピング機能
+│   │   ├── __init__.py
+│   │   ├── scraper.py              # スクレイピングコア機能
+│   │   ├── url_builder.py          # URL生成機能
+│   │   └── parser.py               # HTMLパーサー
+│   │
+│   ├── data/                       # データ管理
+│   │   ├── __init__.py
+│   │   ├── prefectures.py          # 都道府県データ
+│   │   ├── middle_categories.py    # 中項目データ
+│   │   └── small_categories.py     # 小項目データ
+│   │
+│   ├── utils/                      # ユーティリティ
+│   │   ├── __init__.py
+│   │   ├── date_filter.py          # 日付フィルタリング
+│   │   ├── file_handler.py         # ファイル保存処理
+│   │   └── logger.py               # ログ管理
+│   │
+│   └── config/                     # 設定
+│       ├── __init__.py
+│       └── settings.py             # アプリケーション設定
+│
+├── build/                          # ビルド関連
+│   ├── setup.py                    # cx_Freeze設定
+│   └── icon.ico                    # アプリケーションアイコン（オプション）
+│
+├── docs/                           # ドキュメント
+│   └── README.md                   # プロジェクト説明
+│
+├── requirements.txt                # 依存関係
+├── .gitignore                      # Git除外設定
+├── LICENSE                         # ライセンス
+└── run.py                          # 開発用実行スクリプト
 ```
 
 ## トラブルシューティング
